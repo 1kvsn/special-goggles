@@ -9,4 +9,8 @@ describe("String Calculator: add function", () => {
   test("should return the number if only 1 number is passed as argument", () => {
     expect(add("1")).toBe(1);
   });
+
+  test("should return the sum of two numbers", () => {
+    expect(add("1,5")).toBe(6);
+  });
 });

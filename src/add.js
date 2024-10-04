@@ -1,9 +1,9 @@
-export function add(str) {
-  if (str === "") return 0;
+export function add(numbers) {
+  if (numbers === "") return 0;
 
-  const numbers = str.split(",");
+  const numberList = numbers.split(",");
 
-  return numbers.reduce(
+  return numberList.reduce(
     (acc, currentVal) => Number(acc) + Number(currentVal),
     0
   );

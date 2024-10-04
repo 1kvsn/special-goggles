@@ -17,4 +17,8 @@ describe("String Calculator: add function", () => {
   test("should return the sum of any amount of numbers", () => {
     expect(add("1,5,4,10,20")).toBe(40);
   });
+
+  test("should handle new line between numbers instead of comma", () => {
+    expect(add("1\n2,3")).toBe(6);
+  });
 });

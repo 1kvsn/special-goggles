@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { add } from "./add";
+import InputField from "./components/Input";
+import ResultDisplay from "./components/ResultDisplay";
 
 /**
  * 1. Please note that I have intentionally used React for assignment.
  * 2. If UI & deployment requirement was not present in the assignment, I would have preferred vanilla JS.
  * 3. Since Netlify allows easiest deployment process for React project, I selected React here. I did not want to spend too much time on the assignment and deployment.
  * 4. React is an overkill for these kinds of tasks in my opinion.
- *
+ * 5. The invidual component's CSS could be handled in a better way. For example, CSS Modules
  *
  */
 
@@ -20,7 +22,7 @@ function StringCalculator() {
     }
   }, [inputVal]);
 
-  const handleCalculate = () => {
+  function handleCalculate() {
     try {
       // https://stackoverflow.com/a/30811125/10936392
       const sanitisedVal = inputVal.replace("\\n", "\n");
@@ -30,7 +32,7 @@ function StringCalculator() {
     } catch (error) {
       setResult(`Error: ${error.message}`);
     }
-  };
+  }
 
   function handleKeyUp(e) {
     if (e.key === "Enter") {
@@ -38,25 +40,20 @@ function StringCalculator() {
     }
   }
 
-  function getClassNameForResult() {
-    if (result.startsWith("Error")) {
-      return "danger";
-    }
-    return "";
-  }
-
   return (
     <div>
       <h1>String Calculator</h1>
-      <input
-        type="text"
+
+      <InputField
         placeholder="Enter numbers..."
         value={inputVal}
-        onChange={(e) => setInputVal(e.target.value)}
+        onChange={(value) => setInputVal(value)}
         onKeyUp={handleKeyUp}
       />
+
       <button onClick={handleCalculate}>Calculate Sum</button>
-      <h4 className={getClassNameForResult()}>{result}</h4>
+
+      <ResultDisplay result={result} />
     </div>
   );
 }

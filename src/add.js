@@ -1,7 +1,6 @@
 export function add(numbers) {
   if (numbers === "") return 0;
 
-
   let delimiter = ",";
   let numbersPart = numbers;
 

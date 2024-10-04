@@ -22,8 +22,10 @@ function StringCalculator() {
 
   const handleCalculate = () => {
     try {
-      console.log(typeof inputVal);
-      const sum = add(inputVal);
+      // https://stackoverflow.com/a/30811125/10936392
+      const sanitisedVal = inputVal.replace("\\n", "\n");
+
+      const sum = add(sanitisedVal);
       setResult(`Result: ${sum}`);
     } catch (error) {
       setResult(`Error: ${error.message}`);

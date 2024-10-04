@@ -16,6 +16,14 @@ export function add(numbers) {
 
   const numberArr = numbersPart.split(regex).map(Number);
 
+  const negativeNumbers = numberArr.filter((num) => num < 0);
+
+  if (negativeNumbers.length > 0) {
+    throw new Error(
+      "negative numbers not allowed " + negativeNumbers.join(", ")
+    );
+  }
+
   return numberArr.reduce(
     (acc, currentVal) => Number(acc) + Number(currentVal),
     0
